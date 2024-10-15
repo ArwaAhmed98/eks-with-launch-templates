@@ -1,0 +1,29 @@
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: efs-pvc
+spec:
+  accessModes:
+    - ReadWriteMany
+  storageClassName: gp2
+  resources:
+    requests:
+      storage: 5Gi
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: efs-test-pod
+spec:
+  containers:
+    - name: test-container
+      image: busybox
+      command: ["/bin/sh", "-c", "echo 'Hello from EFS storage!' > /mnt/efs/testfile && sleep 3600"]
+      volumeMounts:
+        - name: efs-storage
+          mountPath: /mnt/efs
+  volumes:
+    - name: efs-storage
+      persistentVolumeClaim:
+        claimName: efs-pvc

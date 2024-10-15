@@ -1,0 +1,38 @@
+alertmanager:
+  alertmanagerSpec:
+    retention: 240h
+    storage: 
+      volumeClaimTemplate:
+        spec:
+          storageClassName: "gp2"
+          accessModes: ["ReadWriteOnce"]
+          resources:
+            requests:
+              storage: 20Gi
+
+prometheus:
+  prometheusSpec:  
+    retention: 10d  
+    storageSpec: 
+     volumeClaimTemplate:
+       spec:
+         storageClassName: "gp2"
+         accessModes: ["ReadWriteOnce"]
+         
+    resources:
+      limits:
+        cpu: 4m
+        memory: 16Gi
+      requests:
+        cpu: 2m
+        memory: 8Gi
+
+server:
+  service:
+    type: NodePort
+alertmanager:
+  service:
+    type: NodePort
+pushgateway:
+  service:
+    type: NodePort
