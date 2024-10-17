@@ -53,7 +53,7 @@ data "aws_ami" "eks_worker_ami" {
 }
 
 resource "aws_launch_template" "public_ng_launch" {
-  name = "public_ng_launch"
+  name                   = "public_ng_launch"
   vpc_security_group_ids = [aws_eks_cluster.eks_cluster.vpc_config[0].cluster_security_group_id, aws_security_group.allow_access_from_bastion.id]
   block_device_mappings {
     device_name = "/dev/xvda"

@@ -11,9 +11,9 @@ resource "aws_security_group" "allow_access_from_bastion" {
     # protocol    = "-1" # All protocols
     # cidr_blocks = ["0.0.0.0/0"]
     # description = "Allow SSH access from Bastion Host"
-    from_port = 22 # SSH port
-    to_port = 22
-    protocol = "tcp"
+    from_port       = 22 # SSH port
+    to_port         = 22
+    protocol        = "tcp"
     security_groups = [module.bastion_sg.security_group_id] # Reference bastion security group
   }
   ingress {
@@ -49,9 +49,9 @@ resource "aws_security_group" "allow_ssh_from_public_nodes" {
     # protocol    = "-1" # All protocols
     # cidr_blocks = ["0.0.0.0/0"]
     # description = "Allow SSH access from Bastion Host"
-    from_port = 22 # SSH port
-    to_port = 22
-    protocol = "tcp"
+    from_port       = 22 # SSH port
+    to_port         = 22
+    protocol        = "tcp"
     security_groups = [aws_security_group.allow_access_from_bastion.id] # Reference bastion security group
   }
   ingress {

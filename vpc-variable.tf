@@ -34,3 +34,8 @@ variable "vpc_single_nat_gateway" {
   default     = true
 }
 
+locals {
+  common_tags = {
+    vpc = "k8s-vpc-resource"
+  }
+}
