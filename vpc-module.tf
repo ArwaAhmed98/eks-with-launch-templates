@@ -3,11 +3,11 @@ module "vpc" {
   version = "5.13.0"
 
 
-  name            = var.vpc_name
-  azs             = ["us-east-1a", "us-east-1b"]
-  cidr            = var.vpc_cidr_block
-  public_subnets  = var.vpc_public_subnets
-  private_subnets = var.vpc_private_subnets
+  name                    = var.vpc_name
+  azs                     = ["us-east-1a", "us-east-1b"]
+  cidr                    = var.vpc_cidr_block
+  public_subnets          = var.vpc_public_subnets
+  private_subnets         = var.vpc_private_subnets
   map_public_ip_on_launch = true
   #enable nat gateway and set up routable to private subnets 
   enable_nat_gateway = var.vpc_enable_nat_gateway

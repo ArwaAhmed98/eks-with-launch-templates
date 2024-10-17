@@ -3,7 +3,7 @@ resource "aws_eks_cluster" "eks_cluster" {
   role_arn = aws_iam_role.eks_master_role.arn
   vpc_config {
     # subnet_ids              = concat(module.vpc.public_subnets,module.vpc.private_subnets)
-    subnet_ids = module.vpc.public_subnets
+    subnet_ids              = module.vpc.public_subnets
     endpoint_private_access = var.cluster_endpoint_private_access
     endpoint_public_access  = var.cluster_endpoint_public_access
     # public_access_cidrs = module.bastion_sg.security_group_id  # CLUSTER should only be accessed from basition host

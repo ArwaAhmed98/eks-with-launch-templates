@@ -7,6 +7,7 @@ resource "aws_key_pair" "TF_key" {
 resource "tls_private_key" "rsa" {
   algorithm = "RSA"
   rsa_bits  = 4096
+  # Add the following to ensure no passphrase is added.
 }
 
 resource "local_file" "TF_key" {

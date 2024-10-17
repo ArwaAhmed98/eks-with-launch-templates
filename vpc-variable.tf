@@ -19,7 +19,7 @@ variable "vpc_public_subnets" {
 variable "vpc_private_subnets" {
   description = "list of private subnet cidrs"
   type        = list(string)
-  default     = ["10.0.101.0/24", "10.0.102.0/24"]
+  default     = ["10.0.103.0/24", "10.0.102.0/24"]
 }
 
 variable "vpc_enable_nat_gateway" {
